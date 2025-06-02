@@ -12,4 +12,4 @@ app.get("/", (req,res) => {
 
 app.get("/greet",(req,res)=>(res.send("Greetings")))
 app.get("/name",(req,res)=>(res.send("Amrutha")))
-app.get("/weather",(req,res)=>(res.send("30")))
+app.get("/weather",(req,res)=>(res.send("30 degrees")))
