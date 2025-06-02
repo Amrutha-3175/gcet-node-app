@@ -10,4 +10,4 @@ app.get("/", (req,res) => {
     return res.send("Good Morning");
 });
 
-app.get("/greet",(req,res)=>{res.send("Greetings")})
+app.get("/greet",(req,res)=>(res.send("Greetings")))
