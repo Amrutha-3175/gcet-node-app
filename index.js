@@ -1,31 +1,19 @@
 import express from "express";
+import mongoose from "mongoose";
 import cors from "cors";
+
+import userRouter from "./routes/userRoutes.js";
+import productRouter from "./routes/productRoutes.js";
+
 const app = express();
-app.listen(8080, () => {
-  console.log("Server Started");
-});
 app.use(cors());
-app.get("/", (req, res) => {
-  return res.send("Good Morning");
-});
+app.use(express.json());
 
-app.get("/greet", (req, res) => {
-  res.send("Greetings");
-});
+app.use("/users", userRouter);
 
-app.get("/name", (req, res) => {
-  res.send("Amrutha");
-});
+app.use("/products", productRouter);
 
-app.get("/weather", (req, res) => {
-  res.send("30 degrees");
-});
-
-app.get("/products", (req, res) => {
-  const products = [
-    { name: "Product 1", price: 34 },
-    { name: "Product 2", price: 64 },
-    { name: "Product 3", price: 45 },
-  ];
-  res.json(products);
+app.listen(8080, () => {
+  mongoose.connect("mongodb://localhost:27017/gcet");
+  console.log("Server Started");
 });
