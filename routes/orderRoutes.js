@@ -1,12 +1,8 @@
-import express from "express";
-import orderModel from "../models/orderModel.js";
-
-const orderRouter = express.Router();
-
-orderRouter.post("/new", async (req, res) => {
-  const { email, price } = req.body;
-  const result = orderModel.insertOne({ email, price });
-  return res.json(result);
+import mongoose from 'mongoose'
+const orderSchema = mongoose.Schema({
+  email: { type: String },
+  orderValue: { type: Number },
 });
+// const product = mongoose.model("Product", productSchema);
 
-export default orderRouter
+export default mongoose.model("Order", orderSchema);
